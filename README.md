@@ -1,2 +1,1 @@
-# project_5
-Client project, group 2
+[Project guidelines](https://git.generalassemb.ly/DSI-US-11/project-client-project)
