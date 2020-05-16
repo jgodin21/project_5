@@ -53,3 +53,10 @@ The resulting story was clearest when focusing on posts mentioning each of the r
   - nltk.sentiment.vader SentimentIntensityAnalyzer
   - Tweepy
 - Tableau (for visualizing COVID-19 case data)
+
+# Contributors
+The data scientists responsible for this project include:
+- Alex Klapheke
+- Jon Godin
+- Luken Weaver
+- Reza Farrokhi Saray
