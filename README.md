@@ -40,6 +40,33 @@ The resulting story was clearest when focusing on posts mentioning each of the r
 - [Presentation](./presentation/Covid%2019%20Sentiment%20Analysis.pdf)
 
 # Data Acquisition, Ingestion, & Cleaning
+The Reddit API has two databases for original posts (submissions) and comments, respectively.
+
+We chose to focus on comments, as we felt they were more likely to express sentiment. Submissions were needed to
+ensure topic relevance.
+
+Our solution was to build a custom two-step data gathering module that would utilize the information in both databases, and pass the resulting texts into the the VADER sentiment analyzer (Hutto & Gilbert 2014).
+
+*Our data gathering module...*
+- ...first searches the submissions database for the most commented posts using a keyword or set
+of keywords in a given time frame (for our baseline, the keywords we used were “covid-19”, “coronavirus”, “quarantine”,
+and “pandemic” for the 80 day period between February 2nd and May 10th) inside given subreddits (the local subreddits for
+Houston and NYC)…
+
+- … extracts the unique link ids of those posts…
+
+- … then performs a query on the comments database to pull all comments relating to those link ids (i.e. all comments for
+those posts) .
+
+The data for each subreddit were then balanced by taking the smallest sample (Houston had fewer comments than New
+York) and then sampling all subreddits for that number of data points to be fed into the sentiment analyzer).
+
+*The VADER analyzer...*  
+- ...matches 7500 human-annotated keywords for polarity (postive or negative) and intensity (how strongly felt).  
+
+- ...incorporates contextual information such as negations ('not'), intensifiers ('very'), hedges ('a little...'), and even emoticons (':)')
+
+- ...works on unprocessed text, so no need to tokenize, etc.
 
 # Software Requirements
 - Python packages
